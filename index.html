@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Snippets Pro - The Original WordPress Code Snippet Plugin &amp; AI Assistant</title>
+  <meta name="description" content="Manage PHP, HTML, CSS, and JavaScript snippets safely in WordPress with cloud sync, conditional execution, and AI generation. Replace functions.php with confidence.">
+  <meta name="keywords" content="WordPress Code Snippets, CodeSnippets Pro, WP PHP snippets, functions.php replacement, WordPress AI code generator, cloud sync snippets, Smackcoders">
+  <meta name="author" content="Smackcoders">
+  
+  <!-- Open Graph / Social Sharing Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://codesnippets.pro/">
+  <meta property="og:title" content="Code Snippets Pro - The Original WordPress Code Snippet Plugin">
+  <meta property="og:description" content="AI-enhanced code snippet management with cloud syncing, safe execution, and targeted conditions for WordPress.">
+  <meta property="og:image" content="https://codesnippets.pro/assets/og-image.png">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Code Snippets Pro - The Original WordPress Code Snippet Plugin">
+  <meta name="twitter:description" content="Manage PHP, HTML, CSS, and JS snippets safely with AI and Cloud Sync.">
+  
+  <!-- Favicon & Stylesheet -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300a79d'><path d='M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z'/></svg>">
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Code Snippets Pro",
+    "operatingSystem": "WordPress",
+    "applicationCategory": "DeveloperApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "1000000"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Smackcoders",
+      "url": "https://smackcoders.com"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- STICKY HEADER / NAVIGATION -->
+  <header class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="logo-brand" id="nav-logo">
+        <div class="logo-icon">✂</div>
+        <span>CodeSnippets</span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu" id="nav-menu-list">
+          <li><a href="#hero" class="nav-link active" id="nav-home">Home</a></li>
+          <li><a href="#pricing" class="nav-link" id="nav-pricing">Pricing</a></li>
+          <li class="dropdown">
+            <a href="#features" class="nav-link" id="nav-resources">Resources ▾</a>
+            <div class="dropdown-menu">
+              <a href="#documentation" class="dropdown-item" id="nav-docs">Documentation</a>
+              <a href="#library" class="dropdown-item" id="nav-library">Snippets Library</a>
+              <a href="#ai-features" class="dropdown-item" id="nav-ai-res">Code Snippets AI</a>
+              <a href="#faq" class="dropdown-item" id="nav-faq-link">Knowledge Base</a>
+            </div>
+          </li>
+          <li><a href="#library" class="nav-link" id="nav-snippet-search">Snippet Search</a></li>
+          <li><a href="#pricing" class="nav-link" id="nav-login">Login</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#pricing" class="btn btn-terracotta btn-sm" id="nav-cta-getstarted">Get Started</a>
+        <button class="mobile-toggle" id="mobile-menu-toggle" aria-label="Toggle navigation menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">The Original Code Snippets Plugin for WordPress</h1>
+          <p class="hero-subtitle">
+            AI-enhanced code snippet management with cloud syncing and intuitive customisation features to help you create a pixel-perfect website.
+          </p>
+          <div class="hero-cta-group">
+            <a href="#pricing" class="btn btn-teal btn-lg" id="hero-cta-tryfree">Try Free</a>
+            <a href="#pricing" class="btn btn-terracotta btn-lg" id="hero-cta-buynow">Buy Now</a>
+          </div>
+        </div>
+
+        <!-- HERO FEATURE BAR (6 KEY HIGHLIGHTS) -->
+        <div class="hero-feature-bar">
+          <div class="feature-bar-item">
+            <div class="feature-bar-icon">🔘</div>
+            <div class="feature-bar-title">Toggle Snippets</div>
+            <div class="feature-bar-desc">Control what runs</div>
+          </div>
+          <div class="feature-bar-item">
+            <div class="feature-bar-icon">☁️</div>
+            <div class="feature-bar-title">Cloud Sync</div>
+            <div class="feature-bar-desc">Backup and Sync</div>
+          </div>
+          <div class="feature-bar-item">
+            <div class="feature-bar-icon">✳️</div>
+            <div class="feature-bar-title">AI Generate</div>
+            <div class="feature-bar-desc">All snippet types</div>
+          </div>
+          <div class="feature-bar-item">
+            <div class="feature-bar-icon">🔌</div>
+            <div class="feature-bar-title">Reduce Plugins</div>
+            <div class="feature-bar-desc">Use snippets instead</div>
+          </div>
+          <div class="feature-bar-item">
+            <div class="feature-bar-icon">😊</div>
+            <div class="feature-bar-title">Easy to use</div>
+            <div class="feature-bar-desc">All in one place</div>
+          </div>
+          <div class="feature-bar-item">
+            <div class="feature-bar-icon">🔒</div>
+            <div class="feature-bar-title">Secure</div>
+            <div class="feature-bar-desc">Safe and secure</div>
+          </div>
+        </div>
+
+        <!-- HERO DASHBOARD MOCKUP WITH ANNOTATIONS -->
+        <div class="mockup-wrapper">
+          <!-- ANNOTATION BOXES -->
+          <div class="annotation-box annotation-callout-ai">Create and Explain Code Snippets with AI</div>
+          <div class="annotation-box annotation-callout-reduce">Reduce plugins by using snippets instead ⚡</div>
+          <div class="annotation-box annotation-callout-toggle">Toggle Snippets to control what runs</div>
+          <div class="annotation-box annotation-callout-sync">Sync and Backup Snippets to Cloud ☁️</div>
+          <div class="annotation-box annotation-callout-conditions">
+            <strong>Snippet Conditions</strong><br>
+            Show this snippet if...<br>
+            <span style="display:inline-block; margin-top:4px; font-size:0.75rem; background:#fff; padding:2px 6px; border-radius:4px; border:1px solid #cbd5e1;">AND / OR Logic Rules</span>
+          </div>
+
+          <div class="wp-mockup">
+            <div class="wp-header-bar">
+              <div class="wp-logo-dot">W</div>
+              <div class="wp-top-btn"></div>
+            </div>
+            <div class="wp-body">
+              <div class="wp-sidebar">
+                <div class="wp-sidebar-item"></div>
+                <div class="wp-sidebar-item"></div>
+                <div class="wp-sidebar-active">
+                  <div class="logo-icon" style="width:28px; height:28px; font-size:0.9rem;">✂</div>
+                </div>
+                <div class="wp-sidebar-item"></div>
+              </div>
+              <div class="wp-content">
+                <div class="wp-content-header">
+                  <div class="wp-title">
+                    Snippets <button class="btn-outline btn-sm" style="font-size:0.75rem; padding:0.2rem 0.6rem;">Add New</button>
+                    <span class="btn-wp-ai">AI Generate ✨</span>
+                  </div>
+                </div>
+
+                <div class="wp-tags-bar">
+                  <span class="wp-filter-tag active">All Snippets</span>
+                  <span class="wp-filter-tag">PHP</span>
+                  <span class="wp-filter-tag">HTML</span>
+                  <span class="wp-filter-tag">CSS</span>
+                  <span class="wp-filter-tag">JS</span>
+                  <span class="wp-sync-tag">Cloud Sync Connected</span>
+                </div>
+
+                <div class="wp-table">
+                  <!-- Row 1 -->
+                  <div class="wp-row">
+                    <input type="checkbox" checked aria-label="Select snippet row 1">
+                    <label class="switch">
+                      <input type="checkbox" checked aria-label="Toggle HTML Snippet active state">
+                      <span class="slider"></span>
+                    </label>
+                    <div class="sk-line sk-long"></div>
+                    <span class="tag-badge tag-html" style="margin-left:auto;">HTML</span>
+                  </div>
+                  <!-- Row 2 -->
+                  <div class="wp-row">
+                    <input type="checkbox" aria-label="Select snippet row 2">
+                    <label class="switch">
+                      <input type="checkbox" aria-label="Toggle PHP Snippet active state">
+                      <span class="slider"></span>
+                    </label>
+                    <div class="sk-line sk-med"></div>
+                    <span class="tag-badge tag-php" style="margin-left:auto;">PHP</span>
+                  </div>
+                  <!-- Row 3 -->
+                  <div class="wp-row">
+                    <input type="checkbox" aria-label="Select snippet row 3">
+                    <label class="switch">
+                      <input type="checkbox" aria-label="Toggle JS Snippet active state">
+                      <span class="slider"></span>
+                    </label>
+                    <div class="sk-line sk-long"></div>
+                    <span class="tag-badge tag-js" style="margin-left:auto;">JS</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SOCIAL PROOF & TESTIMONIALS SECTION -->
+    <section class="social-proof-section">
+      <div class="container">
+        <h2 class="proof-heading">Join more than <span>1 Million Happy Users</span></h2>
+        
+        <div class="testimonials-grid">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-card">
+            <div>
+              <div class="stars">★★★★★</div>
+              <h3 class="testimonial-title">"...Must-Have for Every Project..."</h3>
+              <p class="testimonial-text">
+                "I use this Tool in every project. Together with ChatGPT, even someone like me with outdated PHP skills can integrate very useful functions into WordPress by myself."
+              </p>
+            </div>
+            <div class="author-info">
+              <div class="author-avatar">AU</div>
+              <div class="author-name">AUSDEMNICHTS</div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-card">
+            <div>
+              <div class="stars">★★★★★</div>
+              <h3 class="testimonial-title">"...Extremely useful and intuitive..."</h3>
+              <p class="testimonial-text">
+                "I've been using this plugin for a few years now and it's been great. If you need to add custom code to your site without having to modify your theme, child theme, or plugin this is the way to go."
+              </p>
+            </div>
+            <div class="author-info">
+              <div class="author-avatar">RA</div>
+              <div class="author-name">RICK ALDAY</div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="testimonial-card">
+            <div>
+              <div class="stars">★★★★★</div>
+              <h3 class="testimonial-title">"...Developers Swiss Army Knife..."</h3>
+              <p class="testimonial-text">
+                "I highly recommend this to anybody that lives in the developer world of WordPress. Great job Code Snippets!"
+              </p>
+            </div>
+            <div class="author-info">
+              <div class="author-avatar">AV</div>
+              <div class="author-name">AVITRIO</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE DEMO ("See what a snippet can do...") -->
+    <section class="interactive-demo-section" id="interactive-demo">
+      <div class="container">
+        <h2 class="demo-title">See what a snippet can do...</h2>
+
+        <div class="demo-container">
+          <!-- Left Controls Box -->
+          <div class="demo-controls-card">
+            <p class="demo-description">
+              Code Snippets empowers you to fully control your site, tweaking everything from interactivity and styling on the front-end, to fully customizing the WordPress dashboard to suit your workflow.
+            </p>
+
+            <div class="demo-hint-box">
+              Toggle any of the snippets below 👇
+            </div>
+
+            <div class="snippet-toggle-list">
+              <!-- PHP Toggle -->
+              <div class="snippet-toggle-item item-php">
+                <label class="switch">
+                  <input type="checkbox" id="toggle-php" aria-label="Toggle Add Sale Badge snippet">
+                  <span class="slider"></span>
+                </label>
+                <div class="snippet-meta">
+                  <div class="snippet-name">Add Sale Badge</div>
+                  <div class="snippet-sublinks">Edit | Clone | Export | Sync to Cloud</div>
+                </div>
+                <span class="tag-badge tag-php">PHP</span>
+              </div>
+
+              <!-- HTML Toggle -->
+              <div class="snippet-toggle-item item-html">
+                <label class="switch">
+                  <input type="checkbox" id="toggle-html" aria-label="Toggle Make the Price Reasonable snippet">
+                  <span class="slider"></span>
+                </label>
+                <div class="snippet-meta">
+                  <div class="snippet-name">Make the Price Reasonable!</div>
+                  <div class="snippet-sublinks">Edit | Clone | Export | Sync to Cloud</div>
+                </div>
+                <span class="tag-badge tag-html">HTML</span>
+              </div>
+
+              <!-- CSS Toggle -->
+              <div class="snippet-toggle-item item-css">
+                <label class="switch">
+                  <input type="checkbox" id="toggle-css" aria-label="Toggle Make the Image Background Pop snippet">
+                  <span class="slider"></span>
+                </label>
+                <div class="snippet-meta">
+                  <div class="snippet-name">Make the Image Background Pop!</div>
+                  <div class="snippet-sublinks">Edit | Clone | Export | Sync to Cloud</div>
+                </div>
+                <span class="tag-badge tag-css">CSS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Product Preview Card -->
+          <div class="demo-preview-card" id="demo-product-card">
+            <div class="product-image-container" id="demo-img-container">
+              <!-- Dynamic Sale Badge -->
+              <div class="sale-badge" id="demo-sale-badge">SALE</div>
+              <img src="assets/shirt.png" alt="Code Snippet Tee Mockup" class="product-img">
+            </div>
+
+            <h3 class="product-title">Code Snippet Tee</h3>
+            
+            <div class="product-price-box">
+              <span class="original-price" id="demo-original-price">$49.00</span>
+              <span class="discounted-price" id="demo-discounted-price">$10.00</span>
+            </div>
+
+            <div class="product-rating">
+              <span style="color:#f59e0b;">★★★★★</span>
+              <span>(1.2k)</span>
+            </div>
+
+            <p class="product-desc">
+              The official code snippets tee. This funny and humorous design is perfect as Christmas, Birthday and Fathers Day, Easter, Valentine's Day or Halloween gifts.
+            </p>
+
+            <a href="#pricing" class="btn btn-terracotta" style="width:100%;">Buy Tee Now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEY FEATURES & SUPPORTED CODE TYPES -->
+    <section class="features-section" id="features">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Powerful Features</span>
+          <h2 class="section-title">Built for Modern WordPress Developers</h2>
+          <p class="section-subtitle">Everything you need to extend, customize, and manage WordPress code without theme clutter.</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon-wrapper">🛡️</div>
+            <h3 class="feature-card-title">Safe Code Execution</h3>
+            <p class="feature-card-desc">Automatic fatal error catching intercepts syntax mistakes and immediately deactivates broken code, keeping your site online without White Screen of Death crashes.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-wrapper">⚡</div>
+            <h3 class="feature-card-title">Conditional Execution</h3>
+            <p class="feature-card-desc">Target snippets precisely by location (Front-end only, Admin only, Single pass) or user role, page URL, and WooCommerce condition.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-wrapper">☁️</div>
+            <h3 class="feature-card-title">Cloud & Team Sync</h3>
+            <p class="feature-card-desc">Backup and sync code snippets across unlimited client sites seamlessly. Share custom functions with your engineering team in one click.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-wrapper">📁</div>
+            <h3 class="feature-card-title">Snippet Organization</h3>
+            <p class="feature-card-desc">Categorize snippets with tags, descriptions, search filters, and full export/import support in JSON or XML format.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-wrapper">📚</div>
+            <h3 class="feature-card-title">Snippets Library</h3>
+            <p class="feature-card-desc">Browse hundreds of verified, pre-tested code snippets ready to copy and run for security hardening, performance tweaks, and custom features.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-wrapper">✳️</div>
+            <h3 class="feature-card-title">CodeSnippets AI</h3>
+            <p class="feature-card-desc">Describe your functionality in plain English and let premium AI models generate, explain, and optimize custom PHP, CSS, or JS code for you.</p>
+          </div>
+        </div>
+
+        <!-- INTERACTIVE CODE TYPES EDITOR SHOWCASE -->
+        <div class="code-types-box">
+          <div class="code-tabs-nav">
+            <button class="code-tab-btn active" data-type="php">PHP Functions</button>
+            <button class="code-tab-btn" data-type="html">HTML &amp; Shortcodes</button>
+            <button class="code-tab-btn" data-type="css">Custom CSS</button>
+            <button class="code-tab-btn" data-type="js">JavaScript</button>
+            <button class="code-tab-btn" data-type="conditions">Logic Conditions</button>
+          </div>
+
+          <div class="code-editor-wrapper">
+            <div class="code-editor-header">
+              <div class="editor-dots">
+                <div class="dot dot-red"></div>
+                <div class="dot dot-yellow"></div>
+                <div class="dot dot-green"></div>
+              </div>
+              <div class="code-editor-title" id="code-display-title">functions.php Replacement Snippet</div>
+              <button class="btn-copy-code" id="btn-copy-snippet">Copy Code</button>
+            </div>
+            <div class="code-body" id="code-display-body">
+<span class="code-comment">// Prevent direct script access</span>
+<span class="code-keyword">if</span> (!<span class="code-function">defined</span>(<span class="code-string">'ABSPATH'</span>)) <span class="code-keyword">exit</span>;
+
+<span class="code-comment">// Add Custom Admin Dashboard Footer Note</span>
+<span class="code-function">add_filter</span>(<span class="code-string">'admin_footer_text'</span>, <span class="code-keyword">function</span>() {
+    <span class="code-keyword">return</span> <span class="code-string">'&lt;span id="footer-thankyou"&gt;Managed with &lt;strong&gt;Code Snippets Pro&lt;/strong&gt;&lt;/span&gt;'</span>;
+});
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- AI-POWERED CAPABILITIES SECTION -->
+    <section class="ai-section" id="ai-features">
+      <div class="container">
+        <div class="ai-grid">
+          <div>
+            <span class="section-tag ai-badge">Code Snippets AI</span>
+            <h2 class="section-title">Take your snippets to the next level with Code Snippets AI</h2>
+            <p style="font-size:1.1rem; color:#475569; margin-bottom:1.5rem; line-height:1.6;">
+              Generate and Activate code snippets directly from the premium plugin. Unlike generic AI tools, our models are specialized in WordPress architecture to give you clean, efficient code.
+            </p>
+            <a href="#pricing" class="btn btn-terracotta btn-lg">Buy Now &amp; Access AI</a>
+          </div>
+
+          <!-- AI Interactive Simulator -->
+          <div class="ai-prompt-box">
+            <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem; color:var(--dark-slate);">Try the AI Prompt Generator Simulator</h3>
+            
+            <div class="ai-input-group">
+              <input type="text" class="ai-input" id="ai-prompt-input" value="Create a Custom Post Type for Recipes" placeholder="e.g. Disable Gutenberg editor...">
+              <button class="btn btn-teal btn-sm" id="btn-ai-generate">Generate</button>
+            </div>
+
+            <div class="ai-quick-prompts">
+              <span class="prompt-pill" data-key="cpt">Create Recipe CPT</span>
+              <span class="prompt-pill" data-key="gutenberg">Disable Gutenberg</span>
+              <span class="prompt-pill" data-key="cart">Cart $100 Discount</span>
+              <span class="prompt-pill" data-key="svg">Allow SVG Uploads</span>
+            </div>
+
+            <div class="ai-output-area" id="ai-output-code">
+add_action('init', function() {
+    register_post_type('recipe', [
+        'labels' => ['name' => __('Recipes'), 'singular_name' => __('Recipe')],
+        'public' => true,
+        'has_archive' => true,
+        'supports' => ['title', 'editor', 'thumbnail'],
+        'menu_icon' => 'dashicons-food'
+    ]);
+});
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SNIPPETS LIBRARY PROMOTION -->
+    <section class="features-section" id="library" style="background:#faf8f5;">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Pre-Built Solutions</span>
+          <h2 class="section-title">Explore 500+ Ready-to-Use Snippets</h2>
+          <p class="section-subtitle">Instantly search and import community and expert snippets into your WordPress dashboard.</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <span class="tag-badge tag-php" style="margin-bottom:0.8rem;">Security</span>
+            <h3 class="feature-card-title">Disable XML-RPC Pingbacks</h3>
+            <p class="feature-card-desc">Block brute-force amplification attacks by turning off XML-RPC features safely.</p>
+            <a href="#pricing" style="font-size:0.88rem; font-weight:700; display:inline-block; margin-top:1rem;">Import Snippet &rarr;</a>
+          </div>
+
+          <div class="feature-card">
+            <span class="tag-badge tag-html" style="margin-bottom:0.8rem;">Performance</span>
+            <h3 class="feature-card-title">Remove WP Version Query Vars</h3>
+            <p class="feature-card-desc">Improve caching efficiency and conceal exact WordPress core version numbers.</p>
+            <a href="#pricing" style="font-size:0.88rem; font-weight:700; display:inline-block; margin-top:1rem;">Import Snippet &rarr;</a>
+          </div>
+
+          <div class="feature-card">
+            <span class="tag-badge tag-js" style="margin-bottom:0.8rem;">Analytics</span>
+            <h3 class="feature-card-title">Defer Non-Critical JS Scripts</h3>
+            <p class="feature-card-desc">Boost Google Core Web Vitals performance by lazy loading heavy scripts.</p>
+            <a href="#pricing" style="font-size:0.88rem; font-weight:700; display:inline-block; margin-top:1rem;">Import Snippet &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FREE VS PRO COMPARISON MATRIX -->
+    <section class="pricing-section" id="pricing">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Transparent Pricing</span>
+          <h2 class="section-title">Free vs Pro Feature Comparison</h2>
+          <p class="section-subtitle">Choose the edition that fits your site management needs.</p>
+        </div>
+
+        <div class="pricing-table-wrapper">
+          <table class="pricing-table">
+            <thead>
+              <tr>
+                <th>Feature / Capability</th>
+                <th>Free Edition</th>
+                <th>Pro Edition 🚀</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>PHP, HTML, CSS &amp; JS Snippets</strong></td>
+                <td><span class="check-icon">✓</span> Included</td>
+                <td><span class="check-icon">✓</span> Unlimited</td>
+              </tr>
+              <tr>
+                <td><strong>Safe Code Execution Error Protection</strong></td>
+                <td><span class="check-icon">✓</span> Included</td>
+                <td><span class="check-icon">✓</span> Enhanced Catching</td>
+              </tr>
+              <tr>
+                <td><strong>Cloud Synchronization across sites</strong></td>
+                <td><span class="cross-icon">✕</span></td>
+                <td><span class="check-icon">✓</span> Unlimited Sync</td>
+              </tr>
+              <tr>
+                <td><strong>Code Snippets AI Assistant</strong></td>
+                <td><span class="cross-icon">✕</span></td>
+                <td><span class="check-icon">✓</span> Full AI Suite</td>
+              </tr>
+              <tr>
+                <td><strong>Advanced Conditional Targeting (Roles, URLs)</strong></td>
+                <td>Basic Location</td>
+                <td><span class="check-icon">✓</span> Full Condition Engine</td>
+              </tr>
+              <tr>
+                <td><strong>Gutenberg Content Snippet Blocks</strong></td>
+                <td><span class="cross-icon">✕</span></td>
+                <td><span class="check-icon">✓</span> Custom Blocks</td>
+              </tr>
+              <tr>
+                <td><strong>Priority Developer Support</strong></td>
+                <td>Community Support</td>
+                <td><span class="check-icon">✓</span> 24/7 Priority Support</td>
+              </tr>
+              <tr>
+                <td><strong>Price</strong></td>
+                <td><strong>$0 / Free</strong></td>
+                <td><strong>Starting at $39/yr</strong></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td><a href="#pricing" class="btn btn-outline btn-sm">Download Free</a></td>
+                <td><a href="#pricing" class="btn btn-terracotta btn-sm">Buy Pro Now</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOCUMENTATION & KNOWLEDGE HUB SECTION -->
+    <section class="docs-section" id="documentation">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Documentation &amp; Guides</span>
+          <h2 class="section-title">Developer Knowledge Hub</h2>
+          <p class="section-subtitle">Everything you need to master custom code snippet management, Cloud Sync, and AI workflows.</p>
+        </div>
+
+        <div class="docs-grid">
+          <!-- Guide 1 -->
+          <div class="docs-card">
+            <div>
+              <span class="docs-badge">Getting Started</span>
+              <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:0.6rem; color:var(--dark-slate);">Quick Start &amp; Setup Guide</h3>
+              <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.5;">Learn how to install Code Snippets, migrate functions from functions.php, and run your first safe PHP snippet.</p>
+            </div>
+            <a href="#faq" style="font-weight:700; font-size:0.85rem; margin-top:1.2rem; color:var(--primary-teal);">Read Documentation &rarr;</a>
+          </div>
+
+          <!-- Guide 2 -->
+          <div class="docs-card">
+            <div>
+              <span class="docs-badge">Targeting Rules</span>
+              <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:0.6rem; color:var(--dark-slate);">Conditional Execution API</h3>
+              <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.5;">Configure URL matching, front-end vs admin execution, user role restrictions, and WooCommerce logic rules.</p>
+            </div>
+            <a href="#faq" style="font-weight:700; font-size:0.85rem; margin-top:1.2rem; color:var(--primary-teal);">Read Documentation &rarr;</a>
+          </div>
+
+          <!-- Guide 3 -->
+          <div class="docs-card">
+            <div>
+              <span class="docs-badge">Safety &amp; Recovery</span>
+              <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:0.6rem; color:var(--dark-slate);">Safe Mode &amp; Error Protection</h3>
+              <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.5;">Understand automatic fatal error trapping, safe mode overrides, and emergency recovery URL parameters.</p>
+            </div>
+            <a href="#faq" style="font-weight:700; font-size:0.85rem; margin-top:1.2rem; color:var(--primary-teal);">Read Documentation &rarr;</a>
+          </div>
+
+          <!-- Guide 4 -->
+          <div class="docs-card">
+            <div>
+              <span class="docs-badge">Cloud Sync</span>
+              <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:0.6rem; color:var(--dark-slate);">Cloud Workspaces &amp; Sync</h3>
+              <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.5;">Connect multiple client WordPress sites to a single centralized cloud library for 1-click deployments.</p>
+            </div>
+            <a href="#faq" style="font-weight:700; font-size:0.85rem; margin-top:1.2rem; color:var(--primary-teal);">Read Documentation &rarr;</a>
+          </div>
+
+          <!-- Guide 5 -->
+          <div class="docs-card">
+            <div>
+              <span class="docs-badge">CodeSnippets AI</span>
+              <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:0.6rem; color:var(--dark-slate);">AI Prompting &amp; Best Practices</h3>
+              <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.5;">Get the most out of AI code generation for custom post types, taxonomies, shortcodes, and security tweaks.</p>
+            </div>
+            <a href="#faq" style="font-weight:700; font-size:0.85rem; margin-top:1.2rem; color:var(--primary-teal);">Read Documentation &rarr;</a>
+          </div>
+
+          <!-- Guide 6 -->
+          <div class="docs-card">
+            <div>
+              <span class="docs-badge">REST API</span>
+              <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:0.6rem; color:var(--dark-slate);">REST API &amp; Webhooks Reference</h3>
+              <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.5;">Manage snippets programmatically through REST endpoints, automated deployment pipelines, and CLI tools.</p>
+            </div>
+            <a href="#faq" style="font-weight:700; font-size:0.85rem; margin-top:1.2rem; color:var(--primary-teal);">Read Documentation &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ ACCORDION SECTION -->
+    <section class="faq-section" id="faq">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Got Questions?</span>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-subtitle">Everything you need to know about Code Snippets Pro.</p>
+        </div>
+
+        <div class="faq-accordion">
+          <details class="faq-item">
+            <summary>What happens if a code snippet contains a syntax error?</summary>
+            <div class="faq-content">
+              Code Snippets includes built-in Safe Mode and real-time syntax checking. If a snippet triggers a fatal PHP error during execution, Code Snippets automatically catches the exception, deactivates the faulty snippet, and displays a friendly warning notice in your dashboard instead of bringing down your site.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Can Code Snippets replace my theme's functions.php file completely?</summary>
+            <div class="faq-content">
+              Yes! Adding code to your theme's functions.php file is dangerous because theme updates overwrite your changes. Code Snippets stores custom functions independently in your database, ensuring your code remains active even when switching themes or updating plugins.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>How does Cloud Synchronization work across multiple sites?</summary>
+            <div class="faq-content">
+              With Cloud Sync in Code Snippets Pro, you can connect your central library to all your WordPress client sites. When you create or update a snippet in the cloud, changes deploy automatically across your connected network.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Is Code Snippets compatible with WooCommerce, Elementor, and Divi?</summary>
+            <div class="faq-content">
+              Absolutely. Code Snippets runs standard WordPress hooks, actions, and filters, making it 100% compatible with WooCommerce, popular page builders, membership plugins, and custom themes.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>How does Code Snippets AI work?</summary>
+            <div class="faq-content">
+              Code Snippets AI integrates deep learning models trained specifically on WordPress APIs. You can ask it to generate code snippets, explain existing code, or optimize performance directly inside your code editor.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA BANNER -->
+    <section class="final-cta-section">
+      <div class="container">
+        <div class="final-cta-content">
+          <h2 class="final-cta-title">Transform Your WordPress Site Today</h2>
+          <p class="final-cta-sub">Join over 1 million developers and site owners managing custom code safely.</p>
+          <div style="display:flex; justify-content:center; gap:1.25rem; flex-wrap:wrap;">
+            <a href="#pricing" class="btn btn-teal btn-lg">Try Free Version</a>
+            <a href="#pricing" class="btn btn-terracotta btn-lg">Upgrade to Pro</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="logo-brand" style="color:white; margin-bottom:1rem;">
+            <div class="logo-icon">✂</div>
+            <span>CodeSnippets</span>
+          </a>
+          <p style="font-size:0.9rem; line-height:1.6; margin-bottom:1.5rem; max-width:320px;">
+            The original and premier code snippet management platform for WordPress. Clean, fast, and secure.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Product</h3>
+          <ul class="footer-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#interactive-demo">Interactive Demo</a></li>
+            <li><a href="#ai-features">Code Snippets AI</a></li>
+            <li><a href="#pricing">Pricing Plans</a></li>
+            <li><a href="#library">Snippet Search</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Resources</h3>
+          <ul class="footer-links">
+            <li><a href="#documentation">Documentation</a></li>
+            <li><a href="#library">Snippets Library</a></li>
+            <li><a href="#faq">Knowledge Base</a></li>
+            <li><a href="#faq">Developer API</a></li>
+            <li><a href="#faq">Changelog</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-col-title">Company</h3>
+          <ul class="footer-links">
+            <li><a href="https://smackcoders.com" target="_blank" rel="noopener">Smackcoders</a></li>
+            <li><a href="#pricing">About Us</a></li>
+            <li><a href="#pricing">Contact Support</a></li>
+            <li><a href="#pricing">Privacy Policy</a></li>
+            <li><a href="#pricing">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Code Snippets Pro. All rights reserved.</div>
+        <div class="smackcoders-brand">
+          <span>Brought to you by</span>
+          <strong style="color:white; font-size:0.95rem;">Smackcoders</strong>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
