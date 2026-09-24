@@ -1,52 +1,121 @@
-// CodeSnippets Pro - Interactive Application JavaScript
+// CodeSnippets Pro - Fully Interactive & Automatically Animated Application Engine
 document.addEventListener('DOMContentLoaded', () => {
 
-  // 1. INTERACTIVE DEMO ("See what a snippet can do...")
+  // =========================================================================
+  // 1. AUTOMATIC LIVE PRODUCT DEMO SIMULATOR ("See what a snippet can do...")
+  // =========================================================================
   const phpToggle = document.getElementById('toggle-php');
   const htmlToggle = document.getElementById('toggle-html');
   const cssToggle = document.getElementById('toggle-css');
+  const jsToggle = document.getElementById('toggle-js');
 
   const saleBadge = document.getElementById('demo-sale-badge');
   const originalPrice = document.getElementById('demo-original-price');
   const discountedPrice = document.getElementById('demo-discounted-price');
   const productImageContainer = document.getElementById('demo-img-container');
+  const thanksBanner = document.getElementById('demo-thanks-banner');
+  const demoSection = document.getElementById('interactive-demo');
 
-  if (phpToggle && saleBadge) {
-    phpToggle.addEventListener('change', (e) => {
-      if (e.target.checked) {
-        saleBadge.classList.add('active');
-      } else {
-        saleBadge.classList.remove('active');
-      }
-    });
-  }
+  let userInteractedWithDemo = false;
+  let demoResumeTimer = null;
 
-  if (htmlToggle && originalPrice && discountedPrice) {
-    htmlToggle.addEventListener('change', (e) => {
-      if (e.target.checked) {
+  function updateDemoUI(type, isActive) {
+    if (type === 'php' && saleBadge && phpToggle) {
+      phpToggle.checked = isActive;
+      if (isActive) saleBadge.classList.add('active');
+      else saleBadge.classList.remove('active');
+    }
+    if (type === 'html' && originalPrice && discountedPrice && htmlToggle) {
+      htmlToggle.checked = isActive;
+      if (isActive) {
         originalPrice.classList.add('strikethrough');
         discountedPrice.classList.add('active');
       } else {
         originalPrice.classList.remove('strikethrough');
         discountedPrice.classList.remove('active');
       }
-    });
+    }
+    if (type === 'css' && productImageContainer && cssToggle) {
+      cssToggle.checked = isActive;
+      if (isActive) productImageContainer.classList.add('pop-bg');
+      else productImageContainer.classList.remove('pop-bg');
+    }
+    if (type === 'js' && thanksBanner && jsToggle) {
+      jsToggle.checked = isActive;
+      if (isActive) thanksBanner.classList.add('active');
+      else thanksBanner.classList.remove('active');
+    }
   }
 
-  if (cssToggle && productImageContainer) {
+  // Manual event handlers
+  if (phpToggle) {
+    phpToggle.addEventListener('change', (e) => {
+      userInteractedWithDemo = true;
+      updateDemoUI('php', e.target.checked);
+      scheduleDemoResume();
+    });
+  }
+  if (htmlToggle) {
+    htmlToggle.addEventListener('change', (e) => {
+      userInteractedWithDemo = true;
+      updateDemoUI('html', e.target.checked);
+      scheduleDemoResume();
+    });
+  }
+  if (cssToggle) {
     cssToggle.addEventListener('change', (e) => {
-      if (e.target.checked) {
-        productImageContainer.classList.add('pop-bg');
-      } else {
-        productImageContainer.classList.remove('pop-bg');
-      }
+      userInteractedWithDemo = true;
+      updateDemoUI('css', e.target.checked);
+      scheduleDemoResume();
+    });
+  }
+  if (jsToggle) {
+    jsToggle.addEventListener('change', (e) => {
+      userInteractedWithDemo = true;
+      updateDemoUI('js', e.target.checked);
+      scheduleDemoResume();
     });
   }
 
-  // 2. CODE SNIPPET TYPES TAB SWITCHER
+  function scheduleDemoResume() {
+    clearTimeout(demoResumeTimer);
+    demoResumeTimer = setTimeout(() => {
+      userInteractedWithDemo = false;
+    }, 7000);
+  }
+
+  // Automatic Step-by-Step Simulation Loop
+  const demoSteps = ['php', 'html', 'css', 'js'];
+  let currentDemoStepIndex = 0;
+  let demoStateOn = true;
+
+  setInterval(() => {
+    if (userInteractedWithDemo || !phpToggle) return;
+
+    if (demoStateOn) {
+      const type = demoSteps[currentDemoStepIndex];
+      updateDemoUI(type, true);
+      currentDemoStepIndex++;
+
+      if (currentDemoStepIndex >= demoSteps.length) {
+        demoStateOn = false;
+        currentDemoStepIndex = 0;
+      }
+    } else {
+      // Pause then smoothly reset for loop
+      demoSteps.forEach(t => updateDemoUI(t, false));
+      demoStateOn = true;
+      currentDemoStepIndex = 0;
+    }
+  }, 2200);
+
+  // =========================================================================
+  // 2. AUTOMATIC CODE PLAYGROUND TAB SWITCHER & SYNTAX DISPLAY
+  // =========================================================================
   const codeTabs = document.querySelectorAll('.code-tab-btn');
   const codeBody = document.getElementById('code-display-body');
   const codeTitle = document.getElementById('code-display-title');
+  const codeBox = document.querySelector('.code-types-box');
 
   const codeSnippets = {
     php: {
@@ -72,15 +141,14 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'Global Custom Stylesheet Snippet',
       code: `<span class="code-comment">/* Custom Site Theme Overrides */</span>
 <span class="code-function">.btn-primary</span> {
-    <span class="code-variable">background</span>: <span class="code-string">linear-gradient(135deg, #00a79d, #14b8a6)</span> !important;
+    <span class="code-variable">background-color</span>: <span class="code-string">#0284c7</span> !important;
     <span class="code-variable">border-radius</span>: <span class="code-string">9999px</span>;
-    <span class="code-variable">box-shadow</span>: <span class="code-string">0 4px 14px rgba(0, 167, 157, 0.35)</span>;
-    <span class="code-variable">transition</span>: <span class="code-string">all 0.3s cubic-bezier(0.4, 0, 0.2, 1)</span>;
+    <span class="code-variable">transition</span>: <span class="code-string">all 0.2s ease</span>;
 }`
     },
     js: {
       title: 'Frontend Interactive Script',
-      code: `<span class="code-comment">// Track CTA Clicks & Trigger Micro-animations</span>
+      code: `<span class="code-comment">// Track CTA Clicks & Trigger Micro-interactions</span>
 document.<span class="code-function">addEventListener</span>(<span class="code-string">'DOMContentLoaded'</span>, () => {
     <span class="code-keyword">const</span> ctaBtn = document.<span class="code-function">querySelector</span>(<span class="code-string">'.hero-cta'</span>);
     ctaBtn?.<span class="code-function">addEventListener</span>(<span class="code-string">'click'</span>, (e) => {
@@ -99,22 +167,119 @@ document.<span class="code-function">addEventListener</span>(<span class="code-s
     }
   };
 
-  codeTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      codeTabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
+  let userInteractedWithTabs = false;
+  let activeTabIdx = 0;
+  const tabKeys = ['php', 'html', 'css', 'js', 'conditions'];
 
-      const type = tab.dataset.type;
+  function activateTabByIndex(idx) {
+    if (!codeTabs.length || !codeBody || !codeTitle) return;
+    codeTabs.forEach(t => t.classList.remove('active'));
+    const tabEl = codeTabs[idx];
+    if (tabEl) {
+      tabEl.classList.add('active');
+      const type = tabEl.dataset.type;
       if (codeSnippets[type]) {
         codeTitle.textContent = codeSnippets[type].title;
-        codeBody.innerHTML = codeSnippets[type].code;
+        codeBody.innerHTML = `<code>${codeSnippets[type].code}</code>`;
       }
+    }
+  }
+
+  codeTabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => {
+      userInteractedWithTabs = true;
+      activeTabIdx = index;
+      activateTabByIndex(index);
+      setTimeout(() => { userInteractedWithTabs = false; }, 8000);
     });
   });
 
-  // 3. COPY CODE BUTTON
+  if (codeBox) {
+    codeBox.addEventListener('mouseenter', () => { userInteractedWithTabs = true; });
+    codeBox.addEventListener('mouseleave', () => { userInteractedWithTabs = false; });
+  }
+
+  setInterval(() => {
+    if (userInteractedWithTabs || !codeTabs.length) return;
+    activeTabIdx = (activeTabIdx + 1) % tabKeys.length;
+    activateTabByIndex(activeTabIdx);
+  }, 4000);
+
+  // =========================================================================
+  // 3. AUTOMATIC AI CODE GENERATOR TYPING SIMULATION
+  // =========================================================================
+  const aiPromptBox = document.querySelector('.ai-floating-input-box');
+  const aiMockLines = document.querySelectorAll('.mock-line');
+
+  const samplePrompts = [
+    'Create a Custom Post Type for Recipes & Menus',
+    'Add Stripe Webhook Listener & Email Notification',
+    'Disable XML-RPC & Block Brute Force Login Attacks',
+    'Generate WooCommerce 15% VIP Checkout Discount'
+  ];
+
+  let promptIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+
+  function typeAiPrompt() {
+    if (!aiPromptBox) return;
+
+    const currentPrompt = samplePrompts[promptIndex];
+    
+    if (!isDeleting) {
+      aiPromptBox.innerHTML = `${currentPrompt.substring(0, charIndex + 1)}<span class="ai-typing-text"></span>`;
+      charIndex++;
+
+      if (charIndex === currentPrompt.length) {
+        isDeleting = true;
+        // Trigger simulated code line pulsing
+        aiMockLines.forEach(l => l.classList.add('animated-code'));
+        setTimeout(typeAiPrompt, 2400);
+        return;
+      }
+    } else {
+      aiPromptBox.innerHTML = `${currentPrompt.substring(0, charIndex - 1)}<span class="ai-typing-text"></span>`;
+      charIndex--;
+
+      if (charIndex === 0) {
+        isDeleting = false;
+        promptIndex = (promptIndex + 1) % samplePrompts.length;
+        aiMockLines.forEach(l => l.classList.remove('animated-code'));
+        setTimeout(typeAiPrompt, 500);
+        return;
+      }
+    }
+
+    const typingSpeed = isDeleting ? 30 : 55;
+    setTimeout(typeAiPrompt, typingSpeed);
+  }
+
+  if (aiPromptBox) {
+    setTimeout(typeAiPrompt, 1000);
+  }
+
+  // =========================================================================
+  // 4. AUTOMATIC SNIPPET CONDITIONS SCANNER BEAM
+  // =========================================================================
+  const conditionRuleRows = document.querySelectorAll('.condition-rule-row');
+  let scannedRowIdx = 0;
+
+  if (conditionRuleRows.length) {
+    setInterval(() => {
+      conditionRuleRows.forEach(row => row.classList.remove('rule-scanned'));
+      if (conditionRuleRows[scannedRowIdx]) {
+        conditionRuleRows[scannedRowIdx].classList.add('rule-scanned');
+      }
+      scannedRowIdx = (scannedRowIdx + 1) % conditionRuleRows.length;
+    }, 2500);
+  }
+
+  // =========================================================================
+  // 5. COPY CODE BUTTON
+  // =========================================================================
   const copyBtn = document.getElementById('btn-copy-snippet');
-  if (copyBtn) {
+  if (copyBtn && codeBody) {
     copyBtn.addEventListener('click', () => {
       const textToCopy = codeBody.textContent;
       navigator.clipboard.writeText(textToCopy).then(() => {
@@ -129,80 +294,9 @@ document.<span class="code-function">addEventListener</span>(<span class="code-s
     });
   }
 
-  // 4. AI CODE GENERATOR SIMULATOR
-  const aiInput = document.getElementById('ai-prompt-input');
-  const aiGenerateBtn = document.getElementById('btn-ai-generate');
-  const aiOutput = document.getElementById('ai-output-code');
-  const quickPrompts = document.querySelectorAll('.prompt-pill');
-
-  const aiTemplates = {
-    cpt: `add_action('init', function() {
-    register_post_type('recipe', [
-        'labels' => ['name' => __('Recipes'), 'singular_name' => __('Recipe')],
-        'public' => true,
-        'has_archive' => true,
-        'supports' => ['title', 'editor', 'thumbnail'],
-        'menu_icon' => 'dashicons-food'
-    ]);
-});`,
-    gutenberg: `// Disable Gutenberg Block Editor for Posts
-add_filter('use_block_editor_for_post', '__return_false', 10);`,
-    cart: `// Apply 10% Discount if Cart Total Exceeds $100
-add_action('woocommerce_cart_calculate_fees', function($cart) {
-    if (is_admin() && !defined('DOING_AJAX')) return;
-    if ($cart->subtotal > 100) {
-        $discount = $cart->subtotal * 0.10;
-        $cart->add_fee(__('10% Bulk Saver Discount'), -$discount);
-    }
-});`,
-    svg: `// Allow SVG Uploads in WordPress Media Library
-add_filter('upload_mimes', function($mimes) {
-    $mimes['svg'] = 'image/svg+xml';
-    return $mimes;
-});`
-  };
-
-  function simulateTyping(text) {
-    aiOutput.textContent = '';
-    let i = 0;
-    const interval = setInterval(() => {
-      if (i < text.length) {
-        aiOutput.textContent += text.charAt(i);
-        i++;
-      } else {
-        clearInterval(interval);
-      }
-    }, 12);
-  }
-
-  if (aiGenerateBtn && aiInput && aiOutput) {
-    aiGenerateBtn.addEventListener('click', () => {
-      const promptText = aiInput.value.toLowerCase();
-      let response = aiTemplates.cpt;
-      
-      if (promptText.includes('gutenberg') || promptText.includes('editor')) {
-        response = aiTemplates.gutenberg;
-      } else if (promptText.includes('cart') || promptText.includes('discount') || promptText.includes('woocommerce')) {
-        response = aiTemplates.cart;
-      } else if (promptText.includes('svg') || promptText.includes('upload') || promptText.includes('media')) {
-        response = aiTemplates.svg;
-      }
-
-      simulateTyping(response);
-    });
-  }
-
-  quickPrompts.forEach(pill => {
-    pill.addEventListener('click', () => {
-      aiInput.value = pill.textContent;
-      const key = pill.dataset.key;
-      if (aiTemplates[key]) {
-        simulateTyping(aiTemplates[key]);
-      }
-    });
-  });
-
-  // 5. MOBILE MENU TOGGLE
+  // =========================================================================
+  // 6. MOBILE MENU TOGGLE
+  // =========================================================================
   const mobileToggleBtn = document.getElementById('mobile-menu-toggle');
   const navMenu = document.getElementById('nav-menu-list');
 
@@ -224,7 +318,9 @@ add_filter('upload_mimes', function($mimes) {
     });
   }
 
-  // 6. SMOOTH SCROLLING FOR ALL INTERNAL LINKS
+  // =========================================================================
+  // 7. SMOOTH SCROLLING FOR ON-PAGE ANCHORS
+  // =========================================================================
   const internalLinks = document.querySelectorAll('a[href^="#"]');
   internalLinks.forEach(link => {
     link.addEventListener('click', (e) => {
@@ -240,6 +336,90 @@ add_filter('upload_mimes', function($mimes) {
         }
       }
     });
+  });
+
+  // =========================================================================
+  // 8. PRICING PAGE: DYNAMIC YEARLY TIER SELECTOR
+  // =========================================================================
+  const yearlySiteDropdown = document.getElementById('yearly-site-dropdown');
+  const yearlyPriceDisplay = document.getElementById('yearly-price-display');
+
+  if (yearlySiteDropdown && yearlyPriceDisplay) {
+    yearlySiteDropdown.addEventListener('change', (e) => {
+      const selectedVal = e.target.value;
+      yearlyPriceDisplay.textContent = `$${selectedVal}.00`;
+    });
+  }
+
+  // =========================================================================
+  // 9. FLOATING HELP BUTTON & MODAL
+  // =========================================================================
+  const helpBtn = document.getElementById('floating-help-btn');
+  const helpPopup = document.getElementById('help-popup');
+  const helpCloseBtn = document.getElementById('help-close-btn');
+
+  if (helpBtn && helpPopup) {
+    helpBtn.addEventListener('click', () => {
+      helpPopup.classList.toggle('open');
+    });
+  }
+
+  if (helpCloseBtn && helpPopup) {
+    helpCloseBtn.addEventListener('click', () => {
+      helpPopup.classList.remove('open');
+    });
+  }
+
+  // =========================================================================
+  // 10. SCROLL REVEAL & STAGGER ANIMATIONS (OBSERVER)
+  // =========================================================================
+  const animatableSelectors = [
+    '.hero-left-content',
+    '.hero-right-visual',
+    '.demo-controls-card',
+    '.demo-preview-card',
+    '.ai-left-content',
+    '.ai-visual-wrapper',
+    '.reduce-visual-col',
+    '.reduce-right-content',
+    '.conditions-left-content',
+    '.conditions-visual-col',
+    '.why-use-card',
+    '.code-types-box',
+    '.showcase-row',
+    '.pricing-table-wrapper',
+    '.docs-card',
+    '.faq-item',
+    '.final-cta-content',
+    '.tier-card-item',
+    '.simple-plan-card',
+    '.plan-card-main'
+  ];
+
+  const elementsToAnimate = document.querySelectorAll(animatableSelectors.join(', '));
+  
+  elementsToAnimate.forEach((el) => {
+    el.classList.add('reveal-on-scroll');
+    if (el.classList.contains('why-use-card') || el.classList.contains('docs-card') || el.classList.contains('tier-card-item') || el.classList.contains('simple-plan-card')) {
+      const siblingIndex = Array.from(el.parentElement.children).indexOf(el);
+      el.classList.add(`stagger-${(siblingIndex % 4) + 1}`);
+    }
+  });
+
+  const scrollObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.08,
+    rootMargin: '0px 0px -30px 0px'
+  });
+
+  document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+    scrollObserver.observe(el);
   });
 
 });
